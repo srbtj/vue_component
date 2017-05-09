@@ -1,0 +1,75 @@
+// row 样式
+.@{row-prefix-cls}{ // ivu-row  独占 一行  div
+  .make-row();
+  display: block;
+
+  &-flex{  // ivu-row-flex 弹性布局
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &:before,
+    &:after{
+      display: flex;
+    }
+
+    /**
+      针对弹性布局： 设置主轴与侧轴上元素的排列方式;
+    */
+
+    &-start{
+      justify-content: flex-start;
+    }
+
+    &-center{
+      justify-content: center;
+    }
+
+    &-end{
+      justify-content: flex-end;
+    }
+
+    &-space-between{
+      justify-content: space-between;
+    }
+
+    &-space-around{
+      justify-content: space-around;
+    }
+
+    &-top{
+      align-items: flex-start;
+    }
+
+    &-middle{
+      align-items: center;
+    }
+
+    &-bottom{
+      align-items: flex-end;
+    }
+  };
+}
+
+// 设置列样式
+.@{col-prefix-cls}{  // ivu-col
+  position: relative;
+  display: block;
+  background: greenyellow;
+}
+
+.make-grid();
+
+.make-grid(-xs);
+
+@media (min-width: @screen-sm-min) {
+  .make-grid(-sm);
+}
+
+@media (min-width: @screen-md-min){
+  .make-grid(-md);
+}
+
+@media (min-width: @screen-lg-min){
+  .make-grid(-lg);
+}
