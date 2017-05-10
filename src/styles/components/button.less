@@ -1,0 +1,70 @@
+@btn-prefix-cls: ~"@{css-prefix}btn"; // ivu-btn;
+.@{btn-prefix-cls}{ // ivu-btn ivu-btn-large ivu-btn-small
+  .btn;
+  .btn-default;
+
+  &-long{
+    width: 100%;
+  }
+
+  & > .ivu-icon + span,
+  & > span + .ivu-icon{
+    margin-left: 4px;
+  }
+
+  &-primary{
+    .btn-primary;
+  }
+
+  &-ghost{
+    .btn-ghost;
+  }
+
+  &-dashed{
+    .btn-dashed;
+  }
+
+  &-text{
+    .btn-text;
+  }
+
+  &-success{}
+
+  &-warning{}
+
+  &-info{}
+
+  &-error{}
+
+  &-circle,
+  &-circle-outline{}
+
+  &-loading{}
+
+  &-group{}
+
+  &-group-vertical{}
+
+  &:before{
+    display: none;
+    content: '';
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    background: #fff;
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    border-radius: inherit;
+    opacity: .35;
+    z-index: 1;
+    -webkit-transition: opacity @transition-time;
+    -moz-transition: opacity @transition-time;
+    -ms-transition: opacity @transition-time;
+    -o-transition: opacity @transition-time;
+    transition: opacity @transition-time;
+    pointer-events: none;
+  }
+
+}

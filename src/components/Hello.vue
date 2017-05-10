@@ -5,17 +5,21 @@
       <iCol :span="5" :offset="1">2222</iCol>
     </Row>
 
+
+    <iButton type="primary" disabled>按钮</iButton>
   </div>
 </template>
 
 <script>
 
  import {Row, Col} from './grid';
+ import {Button} from './button';
   export default {
     name: 'hello',
     components: {
       Row,
-      iCol: Col
+      iCol: Col,
+      iButton: Button
     }
   }
 </script>
