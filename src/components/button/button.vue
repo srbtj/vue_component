@@ -1,15 +1,18 @@
 <template>
   <button :type="htmlType" :class="classes" :disabled="disabled" @click="handleClick">
+    <Icon :type="icon" v-if="icon && !loading"></Icon>
     <span v-if="showSlot" ref="slot"><slot></slot></span>
   </button>
 </template>
 
 <script type="text/ecmascript-6">
 
+  import {Icon} from '../icon';
   import {oneOf} from '../../util/assist';
   const prefixCls = 'ivu-btn';
   export default{
     name: 'iButton',
+    components: {Icon},
     props: {
       type: {
         validator(value){
@@ -32,7 +35,13 @@
         validator(value){
           return oneOf(value, ['button', 'submit', 'reset'])
         }
-      }
+      },
+      size: {
+        validator(value){
+          return oneOf(value, ['small', 'large']);
+        }
+      },
+      icon: String
     },
     data(){
       return {
