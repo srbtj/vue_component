@@ -78,6 +78,9 @@
       <iButton @click="handleReset">reset</iButton>
       <iButton @click="handleSearch" icon="search"></iButton>
     </ButtonGroup>
+
+    <br>
+    <Alert></Alert>
   </div>
 </template>
 
@@ -86,6 +89,7 @@
   import {Row, Col} from './grid';
   import {ButtonGroup, Button} from './button';
   import {Icon} from './icon';
+  import {Alert} from './alert';
   export default {
     name: 'hello',
     components: {
@@ -93,7 +97,8 @@
       iCol: Col,
       ButtonGroup,
       iButton: Button,
-      Icon
+      Icon,
+      Alert
     },
     methods: {
       handleSuccess(e){
