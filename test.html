@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <style>
+    .ivu-btn-group .ivu-btn + .ivu-btn{
+      background: green;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="ivu-btn-group">
+  <button class="ivu-btn">1</button>
+  <button class="ivu-btn">2</button>
+  <button class="ivu-btn">3</button>
+</div>
+<script>
+
+  var str = 1.9890;
+  var str2 = 1.9210;
+
+  console.log( ( Math.round( str * 100 ) / 100 ).toFixed(2) ,  (Math.round( str2 * 100) / 100).toFixed(2));
+</script>
+</body>
+</html>

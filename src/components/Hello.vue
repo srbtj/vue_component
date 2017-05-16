@@ -11,7 +11,7 @@
 
     <!--<ButtonGroup>-->
     <!--<iButton type="primary" disabled>primary</iButton>-->
-    <iButton type="info" disabled>info</iButton>
+    <iButton type="primary">primary</iButton>
     <iButton type="info" size="large">info large</iButton>
     <iButton type="success" size="small">success small</iButton>
     <iButton type="warning" size="large">warning large</iButton>
@@ -35,6 +35,49 @@
     <iButton shape="circle">搜索 <Icon type="search"></Icon></iButton>
     <!--</ButtonGroup>-->
 
+    <br>
+    <ButtonGroup style="margin-top: 10px;">
+      <iButton type="success">成功</iButton>
+      <iButton type="info">重置</iButton>
+      <iButton icon="search"></iButton>
+    </ButtonGroup>
+
+    <ButtonGroup size="large" style="margin-top: 10px;">
+      <iButton type="success">success</iButton>
+      <iButton type="info">reset</iButton>
+      <iButton icon="search"></iButton>
+    </ButtonGroup>
+
+    <ButtonGroup size="small" style="margin-top: 10px;">
+      <iButton type="success">success</iButton>
+      <iButton type="info">reset</iButton>
+      <iButton icon="search"></iButton>
+    </ButtonGroup>
+
+    <ButtonGroup size="small" shape="circle" style="margin-top: 10px;">
+      <iButton type="success">success</iButton>
+      <iButton type="info">reset</iButton>
+      <iButton icon="search"></iButton>
+    </ButtonGroup>
+
+    <ButtonGroup shape="circle" style="margin-top: 10px;">
+      <iButton type="success">success</iButton>
+      <iButton type="info">reset</iButton>
+      <iButton icon="search"></iButton>
+    </ButtonGroup>
+
+    <ButtonGroup size="large" shape="circle" style="margin-top: 10px;">
+      <iButton>success</iButton>
+      <iButton>reset</iButton>
+      <iButton icon="search"></iButton>
+    </ButtonGroup>
+
+    <br>
+    <ButtonGroup vertical style="margin-top: 10px;">
+      <iButton @click="handleSuccess">success</iButton>
+      <iButton @click="handleReset">reset</iButton>
+      <iButton @click="handleSearch" icon="search"></iButton>
+    </ButtonGroup>
   </div>
 </template>
 
@@ -48,9 +91,20 @@
     components: {
       Row,
       iCol: Col,
-//      ButtonGroup,
+      ButtonGroup,
       iButton: Button,
       Icon
+    },
+    methods: {
+      handleSuccess(e){
+        console.log(e, 'success');
+      },
+      handleReset(e){
+        console.log(e, 'reset');
+      },
+      handleSearch(e){
+        console.log(e, 'search');
+      }
     }
   }
 </script>

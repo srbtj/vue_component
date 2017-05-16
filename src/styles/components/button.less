@@ -146,6 +146,7 @@
       类型 primary info success warning error ghost dashed text
     **/
   &-primary {
+    .btn-primary();
   }
 
   &-info {
@@ -179,8 +180,41 @@
   /**
     形状  circle circle-outline
   */
-  &-circle{
+  &-circle,
+  &-circle-outline{
     .btn-circle(@btn-prefix);
+  }
+
+
+  &:before{
+    display: none;
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: #fff;
+    opacity: .5;
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    border-radius: inherit;
+    z-index: 1;
+    -webkit-transition: opacity @transition-time linear;
+    -moz-transition: opacity @transition-time linear;
+    -ms-transition: opacity @transition-time linear;
+    -o-transition: opacity @transition-time linear;
+    transition: opacity @transition-time linear;
+    pointer-events: none;
+  }
+
+  /** 分组 **/
+  &-group{
+    .btn-group(@btn-prefix);
+  }
+
+  &-group-vertical{
+    .btn-group-vertical(@btn-prefix);
   }
 }
 

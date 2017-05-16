@@ -33,7 +33,7 @@
           {
             [`${prefixCls}-${this.size}`]: !!this.size,
             [`${prefixCls}-${this.shape}`]: !!this.shape,
-            [`${prefixCls}-'vertical`]: this.vertical
+            [`${prefixCls}-vertical`]: this.vertical
           }
         ]
       }
