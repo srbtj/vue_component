@@ -80,7 +80,7 @@
     </ButtonGroup>
 
     <br>
-    <Alert></Alert>
+    <Alert icon="search" type="info">111</Alert>
   </div>
 </template>
 

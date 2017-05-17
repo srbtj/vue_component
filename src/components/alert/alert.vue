@@ -59,7 +59,13 @@
     computed: {
       wrapClasses(){
         return [
-          `${prefixCls}`
+          `${prefixCls}`,
+          `${prefixCls}-${this.type}`,
+          {
+            [`${prefixCls}-with-icon`]: this.showIcon,
+            [`${prefixCls}-with-desc`]: this.desc,
+            [`${prefixCls}-with-banner`]: this.banner
+          }
         ];
       },
       iconClasses(){
@@ -99,6 +105,9 @@
         this.closed = true;
         this.$emit('onClose', event);
       }
+    },
+    mounted(){
+      this.desc = this.$slots.desc !== undefined;
     }
   }
 </script>

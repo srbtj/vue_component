@@ -1,0 +1,61 @@
+@alert-prefix-cls: ~"@{css-prefix}alert";
+@icon-prefix-cls: ~"@{css-prefix}icon";
+
+.@{alert-prefix-cls}{
+  position: relative;
+  -webkit-border-radius: @border-radius-base;
+  -moz-border-radius: @border-radius-base;
+  border-radius: @border-radius-base;
+  line-height: 16px;
+  color: @text-color;
+  margin-bottom: 10px;
+  padding: 8px 48px 8px 18px;
+  font-size: @font-size-small;
+
+  /**
+    &: .ivu-alert
+    &&-with-icon:  .ivu-alert.ivu-alert-with-icon
+  **/
+  &&-with-icon{
+    padding: 8px 48px 8px 38px;
+  }
+
+  &-icon{
+    font-size: @font-size-base;
+    position: absolute;
+    left: 18px;
+    top: 8px;
+  }
+
+  &-desc{
+    font-size: @font-size-small;
+    color: @text-color;
+    line-height: 21px;
+    display: none;;
+    text-align: justify;
+  }
+
+  &-info{
+    .alertBorderBase(@info-color)
+  }
+
+  &-success{
+    .alertBorderBase(@success-color)
+  }
+
+  &-warning{
+    .alertBorderBase(@warning-color)
+  }
+
+  &-error{
+    .alertBorderBase(@error-color);
+  }
+}
+
+.alertBorderBase(@borderColor;){
+  border: 1px solid tint(@borderColor, 80%);
+  background-color: tint(@borderColor, 90%);
+  .@{alert-prefix-cls}-icon{
+    color: @borderColor;
+  }
+}
