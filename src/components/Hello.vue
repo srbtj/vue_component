@@ -80,7 +80,14 @@
     </ButtonGroup>
 
     <br>
-    <Alert icon="search" type="info">111</Alert>
+
+    <Alert type="success" showIcon  @onClose="handleClose">成功
+      <template slot="desc">成功描述信息</template>
+    </Alert>
+    <Alert showIcon type="info">info</Alert>
+    <Alert showIcon type="warning">warning</Alert>
+    <Alert showIcon type="error">error</Alert>
+
   </div>
 </template>
 
@@ -109,6 +116,9 @@
       },
       handleSearch(e){
         console.log(e, 'search');
+      },
+      handleClose(e){
+        console.log(e, 'close')
       }
     }
   }

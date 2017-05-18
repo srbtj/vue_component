@@ -1,20 +1,25 @@
 <template>
   <transition name="fade">
     <div :class="wrapClasses" v-if="!closed">
-      <span :classes="iconClasses" v-if="showIcon">
-        <slot name="icon">
-          <Icon :type="iconType"></Icon>
-        </slot>
-      </span>
+      <!-- alert 图标 -->
+      <span :class="iconClasses" v-if="showIcon">
+      <slot name="icon">
+        <Icon :type="iconType"></Icon>
+      </slot>
+    </span>
+      <!-- alert 消息 -->
       <span :class="messageClasses"><slot></slot></span>
+      <!-- alert 消息描述 -->
       <span :class="descClasses"><slot name="desc"></slot></span>
-      <a :class="closeClasses" v-if="closeable" @click="close">
+      <!-- alert 关闭框 -->
+      <a :class="closeClasses" v-if="closable" @click="close">
         <slot name="close">
           <Icon type="ios-close-empty"></Icon>
         </slot>
       </a>
     </div>
   </transition>
+
 </template>
 
 <script type="text/ecmascript-6">
@@ -24,31 +29,37 @@
   const prefixCls = 'ivu-alert';
   export default{
     name: 'Alert',
+    components: {
+      Icon
+    },
     props: {
       type: {
         validator(value){
-          return oneOf(value, ['success', 'info', 'warning', 'error']);
+          return oneOf(value, ['info', 'success', 'warning', 'error']);
         },
         default: 'info'
       },
+      /***
+       *  是否显示图片
+       */
       showIcon: {
         type: Boolean,
         default: false
       },
-      closeable: {
+      /**
+       *  是否关闭 alert
+       */
+      closable: {
         type: Boolean,
         default: false
       },
-      /***
-       *  顶部公告
+      /**
+       *  是否顶部显示
        */
       banner: {
         type: Boolean,
         default: false
       }
-    },
-    components: {
-      Icon
     },
     data(){
       return {
@@ -57,7 +68,7 @@
       }
     },
     computed: {
-      wrapClasses(){
+      wrapClasses() {
         return [
           `${prefixCls}`,
           `${prefixCls}-${this.type}`,
@@ -68,9 +79,6 @@
           }
         ];
       },
-      iconClasses(){
-        return `${prefixCls}-icon`;
-      },
       messageClasses(){
         return `${prefixCls}-message`;
       },
@@ -78,32 +86,34 @@
         return `${prefixCls}-desc`;
       },
       closeClasses(){
-        return `${prefixCls}-close`;
+        return  `${prefixCls}-close`;
+      },
+      iconClasses(){
+        return `${prefixCls}-icon`
       },
       iconType(){
-        let type = '';
-
+        let iconType = '';
         switch (this.type) {
-          case 'success':
-            type = 'success-circled';
-            break;
           case 'info':
-            type = 'info-circled';
+            iconType = 'information-circled';
+            break;
+          case 'success':
+            iconType = 'checkmark-circled';
             break;
           case 'warning':
-            type = 'warning-circled';
+            iconType = 'android-alert';
             break;
           case 'error':
-            type = 'error-circled';
+            iconType = 'close-circled';
             break;
         }
-        return type;
+        return iconType;
       }
     },
-    methods: {
-      close(event){
+    methods:{
+      close(e){
         this.closed = true;
-        this.$emit('onClose', event);
+        this.$emit('onClose',e);
       }
     },
     mounted(){

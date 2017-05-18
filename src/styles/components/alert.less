@@ -1,61 +1,84 @@
 @alert-prefix-cls: ~"@{css-prefix}alert";
 @icon-prefix-cls: ~"@{css-prefix}icon";
 
+.alert-border-base(@color){
+  border: 1px solid tint(@color, 80%);
+  background: tint(@color, 90%);
+
+  .@{alert-prefix-cls}-icon{
+    color: @color;
+  }
+}
+
 .@{alert-prefix-cls}{
   position: relative;
-  -webkit-border-radius: @border-radius-base;
-  -moz-border-radius: @border-radius-base;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 8px 48px 8px 16px;
   border-radius: @border-radius-base;
+  font-size: @font-size-small;
   line-height: 16px;
   color: @text-color;
-  margin-bottom: 10px;
-  padding: 8px 48px 8px 18px;
-  font-size: @font-size-small;
 
-  /**
-    &: .ivu-alert
-    &&-with-icon:  .ivu-alert.ivu-alert-with-icon
-  **/
   &&-with-icon{
     padding: 8px 48px 8px 38px;
   }
 
   &-icon{
-    font-size: @font-size-base;
     position: absolute;
-    left: 18px;
-    top: 8px;
+    left: 16px;
+    top:8px;
+    font-size: @font-size-base;
   }
 
   &-desc{
-    font-size: @font-size-small;
-    color: @text-color;
     line-height: 21px;
-    display: none;;
-    text-align: justify;
+    display: none;
+  }
+  &-success{
+    .alert-border-base(@success-color);
   }
 
   &-info{
-    .alertBorderBase(@info-color)
-  }
-
-  &-success{
-    .alertBorderBase(@success-color)
+    .alert-border-base(@info-color);
   }
 
   &-warning{
-    .alertBorderBase(@warning-color)
+    .alert-border-base(@warning-color);
   }
 
   &-error{
-    .alertBorderBase(@error-color);
+    .alert-border-base(@error-color);
+  }
+
+  &-with-desc{
+    position: relative;
+    padding: 16px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  &-with-desc&-with-icon{
+    padding: 16px 16px 16px 69px;
+  }
+
+  &-with-desc &-desc{
+    display: block;
+  }
+
+  &-with-desc &-message{
+    font-size: 14px;
+    display: block;
+    color: @text-color;
+  }
+
+  &-with-desc &-icon{
+    top: 50%;
+    left: 24px;
+    font-size: 28px;
+    margin-top: -21px;
   }
 }
 
-.alertBorderBase(@borderColor;){
-  border: 1px solid tint(@borderColor, 80%);
-  background-color: tint(@borderColor, 90%);
-  .@{alert-prefix-cls}-icon{
-    color: @borderColor;
-  }
-}
+
