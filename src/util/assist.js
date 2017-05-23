@@ -12,3 +12,11 @@ export function oneOf(value, valueList) {
   }
   return false;
 }
+
+/**
+ *  将驼峰转成括折号  即
+ *  aAaaBaa => a-aaa-baa
+ * */
+export function camelcaseToHyphen(str) {
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}

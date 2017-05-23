@@ -24,6 +24,10 @@
   var str2 = 1.9210;
 
   console.log( ( Math.round( str * 100 ) / 100 ).toFixed(2) ,  (Math.round( str2 * 100) / 100).toFixed(2));
+
+  var str = 'aaBbbCccDdd';
+
+  console.log( str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());
 </script>
 </body>
 </html>

@@ -73,11 +73,11 @@
     <!--</ButtonGroup>-->
 
     <!--<br>-->
-    <!--<ButtonGroup vertical style="margin-top: 10px;">-->
-      <!--<iButton @click="handleSuccess">success</iButton>-->
-      <!--<iButton @click="handleReset">reset</iButton>-->
-      <!--<iButton @click="handleSearch" icon="search"></iButton>-->
-    <!--</ButtonGroup>-->
+    <ButtonGroup vertical style="margin-top: 10px;">
+      <iButton @click="handleSuccess">success</iButton>
+      <iButton @click="handleReset">reset</iButton>
+      <iButton @click="handleSearch" icon="search"></iButton>
+    </ButtonGroup>
 
     <!--<br>-->
 
@@ -97,6 +97,8 @@
   import {ButtonGroup, Button} from './button';
   import {Icon} from './icon';
   import {Alert} from './alert';
+  import Message from './message';
+
   export default {
     name: 'hello',
     components: {
@@ -110,7 +112,8 @@
     methods: {
       handleSuccess(e){
         console.log(e, 'success');
-      },
+        Message.success();
+     },
       handleReset(e){
         console.log(e, 'reset');
       },
