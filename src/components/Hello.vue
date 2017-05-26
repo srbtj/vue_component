@@ -112,7 +112,11 @@
     methods: {
       handleSuccess(e){
         console.log(e, 'success');
-        Message.success();
+        Message.info('成功',2, function (cb) {
+          console.log('返回值======', cb );
+          cb();
+        });
+
      },
       handleReset(e){
         console.log(e, 'reset');
