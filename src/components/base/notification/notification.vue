@@ -4,14 +4,15 @@
       v-for="notice in notices"
       :key="notice.name"
       :name="notice.name"
-      :prefix-cls="notice.prefixCls"
+      :prefix-cls="prefixCls"
+      :content="notice.content"
       :styles="notice.styles"
       :duration="notice.duration"
       :transition-name="notice.transitionName"
+      :onClose="notice.onClose"
       :closable="notice.closable"
-      :content="notice.content"
-      :on-close="notice.onClose"
-    ></Notice>
+    >
+    </Notice>
   </div>
 </template>
 
@@ -20,11 +21,9 @@
   import Notice from './notice.vue';
   const prefixCls = 'ivu-notification';
 
-  const now = new Date();
+  const now = Date.now();
   let seed = 0;
-  /****
-   *
-   */
+  // 获得 通知唯一标志符
   function getUuid() {
     return 'ivuNotification_' + now + '_' + (seed++);
   }
@@ -34,7 +33,7 @@
     props: {
       prefixCls: {
         type: String,
-        default: ''
+        default: prefixCls
       },
       styles: {
         type: Object,
@@ -45,52 +44,53 @@
           }
         }
       },
-      content: {
-        type: String
-      },
       className: {
-        type: Boolean
+        type: String
       }
     },
     computed: {
       classes() {
         return [
-          `${prefixCls}`,
+          `${this.prefixCls}`,
           {
             [`${this.className}`]: !!this.className
           }
-        ]
+        ];
       }
     },
     data() {
       return {
         notices: []
-      }
+      };
     },
     methods: {
-      add(notice){
-        let name = notice.name || getUuid();
-        let _notice = Object.assign({}, {
+      add(noticeOpts){
+        let name = noticeOpts.name || getUuid();
+
+        var _notice = Object.assign({}, {
           name: name,
+          duration: 1.5,
           styles: {
             right: '50%'
           },
           content: '',
-          duration: 1.5,
-          closeable: false,
-        }, notice);
+          closable: false,
+          onClose: function () {
+          }
+        }, noticeOpts);
+
         this.notices.push(_notice);
       },
       close(name){
         let notices = this.notices;
-        for (let i = 0, len = !notices.length; i < len; i++) {
+        for (let i = 0, len = notices.length; i < len; i++) {
           if (notices[i].name === name) {
             this.notices.splice(i, 1);
             break;
           }
         }
       },
-      closeAll(){
+      closeAll() {
         this.notices = [];
       }
     }

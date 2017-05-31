@@ -1,49 +1,42 @@
-/**
- *  该js的作用： 生成 Notification实例， 供外部调用
- *  通用的 通知模版
- *  参数：
- *    styles: Object,
- *    prefixCls: string
- * **/
 import Notification from './notification.vue';
 import Vue from 'vue';
 import {camelcaseToHyphen} from '../../../util/assist';
 
-Notification.netInstance = properties => {
-
-  let _props = properties || {}; // 保存参数
+Notification.newInstance = properties => {
+  let _props = properties;
   let props = '';
 
-  Object.keys(_props).forEach(prop => {
-    props += ' :' + camelcaseToHyphen(prop) + '=' + prop; // =>  :prefix-cls="prefixCls" :styles="styles"
+  Object.keys(_props).forEach( prop => {
+    props += ' :' + camelcaseToHyphen(prop) + '=' + prop;
   });
 
-  /** 向页面中添加 通知 Dom **/
-  const div = document.createElement('div');
+  let div = document.createElement('div');
   div.innerHTML = `<notification${props}></notification>`;
   document.body.appendChild(div);
 
   const notification = new Vue({
     el: div,
-    components: { Notification },
-    data: _props
+    data: _props,
+    components: { Notification }
   }).$children[0];
 
   return {
     component: notification,
-    notice(notice){
-      notification.add(notice);
+    notice(noticeOpts){
+      console.log(noticeOpts)
+      notification.add(noticeOpts);
     },
     remove(name){
       notification.close(name);
     },
     destroy(){
       notification.closeAll();
-      setTimeout( () => {
-        document.body.removeChild(document.querySelectorAll('.ivu-message')[0].parentElement)
-      }, 500);
+
+      setTimeout(function () {
+        document.body.removeChild( document.querySelectorAll('ivu-message')[0].parentElement);
+      }, 500)
     }
-  }
+  };
 };
 
 export default Notification;

@@ -1,6 +1,6 @@
 .motion-common(){
   animation-duration: @animation-time;
-  animation-fill-mode: both;
+  animation-fill-mode: both; // 规定动画在播放之前或之后，其动画效果是否要见   both: 向前或向后都被应用;
 }
 
 .make-motion(@className, @keyframeName){
@@ -28,3 +28,5 @@
 }
 
 @import "./fade";
+@import "./move";
+

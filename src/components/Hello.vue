@@ -98,6 +98,7 @@
   import {Icon} from './icon';
   import {Alert} from './alert';
   import Message from './message';
+  import Notice from './notice'
 
   export default {
     name: 'hello',
@@ -112,14 +113,24 @@
     methods: {
       handleSuccess(e){
         console.log(e, 'success');
-        Message.info('成功',2, function (cb) {
-          console.log('返回值======', cb );
+        Message.success('成功',2, function (cb) {
+//          console.log('返回值======', cb );
           cb();
         });
 
+        Notice.success({
+          title: 'notice',
+          desc: 'this is notice desc info',
+          duration: 0
+        });
      },
       handleReset(e){
         console.log(e, 'reset');
+//        Message.loading('加载中',0);
+
+        var msg = Message.loading('加载中...', 0);
+        console.log('111111111',msg);
+//        setTimeout(msg,3000);
       },
       handleSearch(e){
         console.log(e, 'search');

@@ -1,19 +1,20 @@
-@message-prefix-cls:~"@{css-prefix}message";
-@icon-prefix-cls:~"@{css-prefix}icon";
+@message-prefix-cls: ~"@{css-prefix}message";
+@icon-prefix-cls: ~"@{css-prefix}icon";
 
 .@{message-prefix-cls}{
   position: fixed;
-  z-index: @zindex-message;
   top: 16px;
   left: 0;
   width: 100%;
-  font-size: @font-size-base;
+  z-index: @zindex-message;
+  font-size: @font-size-small;
 
   &-notice{
-    position: absolute;
-    left: 50%;
     width: auto;
     vertical-align: middle;
+    position: absolute;
+    left: 50%;
+
   }
 
   &-notice-content{
@@ -42,11 +43,11 @@
   &-loading .@{icon-prefix-cls}{
     color: @primary-color;
   }
-}
 
-//.@{icon-prefix-cls}{
-//  font-size: 14px;
-//  margin-right: 8px;
-//  position: relative;
-//  top: 1px;
-//}
+  .@{icon-prefix-cls}{
+    position: relative;
+    top: 1px;
+    margin-right: 8px;
+    font-size: 14px;
+  }
+}
