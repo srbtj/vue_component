@@ -5,8 +5,25 @@
     <title>Title</title>
 
   <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    html,body{
+      height: 100%;
+    }
+    body{
+      /*background-color: greenyellow;*/
+      border: 10px solid green;
+    }
+
     .ivu-btn-group .ivu-btn + .ivu-btn{
       background: green;
+    }
+
+    .test{
+      position: relative;
     }
   </style>
 
@@ -17,6 +34,8 @@
   <button class="ivu-btn">1</button>
   <button class="ivu-btn">2</button>
   <button class="ivu-btn">3</button>
+
+  <div class="test" style="margin-left: 100px; margin-top: 400px;">getBoundingClientRect</div>
 </div>
 <script>
 
@@ -28,6 +47,21 @@
   var str = 'aaBbbCccDdd';
 
   console.log( str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());
+
+  var oDiv = document.querySelector('.test').getBoundingClientRect();
+  var style = {
+    top: oDiv.top,
+    bottom: oDiv.bottom,
+    left: oDiv.left,
+    right: oDiv.right
+  };
+
+  console.log(style);
+
+  console.log(oDiv);
+
+  var oBody = window.document.body;
+  console.log(oBody.clientTop, oBody.clientLeft);
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:2000px;">
     <!--<Row type="flex">-->
       <!--<iCol :push="1" :pull="1" :xs="9" :sm="6" :lg="3" :md="5">1111</iCol>-->
       <!--<iCol :span="5" :offset="1">2222</iCol>-->
@@ -88,6 +88,21 @@
     <Alert showIcon type="warning">warning</Alert>
     <Alert showIcon type="error">error</Alert>
 
+    <Affix>
+      <span style="display: inline-block; border: 1px solid green; padding: 10px;">固定在最顶部</span>
+    </Affix>
+
+    <Affix :offsetTop="100">
+      <span style="display: inline-block; border: 1px solid green; padding: 10px;">距离顶部50px</span>
+    </Affix>
+
+    <Affix :offsetBottom="0">
+      <span style="display: inline-block; border: 1px solid green; padding: 10px;">距离底部0px</span>
+    </Affix>
+
+    <BackTop>
+      <!--<div>返回顶部</div>-->
+    </BackTop>
   </div>
 </template>
 
@@ -98,7 +113,9 @@
   import {Icon} from './icon';
   import {Alert} from './alert';
   import Message from './message';
-  import Notice from './notice'
+  import Notice from './notice';
+  import {Affix} from './affix';
+  import {BackTop} from './backtop';
 
   export default {
     name: 'hello',
@@ -108,7 +125,9 @@
       ButtonGroup,
       iButton: Button,
       Icon,
-      Alert
+      Alert,
+      Affix,
+      BackTop
     },
     methods: {
       handleSuccess(e){
